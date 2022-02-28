@@ -30,7 +30,8 @@ GetWayPoint::GetWayPoint(
   const std::string & xml_tag_name,
   const BT::NodeConfiguration & conf)
 : BT::ActionNodeBase(xml_tag_name, conf)
-{  
+{
+  
 }
 
 void
@@ -42,15 +43,25 @@ GetWayPoint::halt()
 BT::NodeStatus
 GetWayPoint::tick()
 {
-  /*
-  if (status() == BT::NodeStatus::IDLE) {
-    start_time_ = node_->now();
-  }
-  */
+  std::deque< std::vector<double> > wps(10, std::vector<double> (2,0));
+  getInput("waypoints", wps);
 
-  //rclcpp::Parameter<float> number = this->get_parameter("wp1").get_value<int>();
-  //std::cout << number << std::endl;
-  //config().blackboard->set("wp1", next);
+  // como NO HAY BLACKBOARD AQUI ,DEBEREMOS COGER WAYPOINTS POR EL INPUT Y DEVOLVER GOAL POR EL OUTPUT ( no funciona aunn)
+  //std::deque< std::vector<double> > wps(10, std::vector<double> (2,0));
+  //blackboard->get("waypoints",wps);
+  
+  ///debug///
+  for (int i = 0; i < wps.size() ; i++) {
+    std::cout <<"wps ["<< i << "]: " << wps[i][0] << " " <<  wps[i][1] << std::endl;
+  }
+  std::cout <<"goal:" << first[0] << " " <<  first[1] << std::endl;
+  ///////////
+
+  //blackboard->set("goal", first);
+  
+  geometry_msgs::msg::PoseStamped goal;
+  goal.pose = first;
+  setOutput(goal);
   return BT::NodeStatus::SUCCESS;
 }
 

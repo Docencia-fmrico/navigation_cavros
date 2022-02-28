@@ -31,18 +31,24 @@ int main(int argc, char * argv[])
 
   auto node = rclcpp::Node::make_shared("patrolling_main");
 
-  node->declare_parameter("wp1");
-  node->declare_parameter("wp2");
+  //read waypoint parameters and store them in a two-dimensional vector
+  node->declare_parameter("waypoints");
+  rclcpp::Parameter wps_param("waypoints",std::vector<std::string>({}));
+  node->get_parameter("waypoints",wps_param);
+  std::vector<std::string> wps = wps_param.as_string_array();
 
-  rclcpp::Parameter first_point = node->get_parameter("wp1");
-  rclcpp::Parameter second_point = node->get_parameter("wp2");
+  std::deque< std::vector<double> > waypoints(wps.size(), std::vector<double> (2,0));
 
-  std::cout << first_point << std::endl;
+  for (int i = 0; i < wps.size() ; i++) {
+    node->declare_parameter(wps[i]);
+    rclcpp::Parameter wp_param(wps[i],std::vector<double>({}));
+    node->get_parameter(wps[i],wp_param);
+    waypoints[i] = wp_param.as_double_array();
 
-  //RCLCPP_INFO(node->get_logger(), " first[]: %s second[]: %s",
-    //            first_point.value_to_string().c_str(),second_point.value_to_string().c_str());
+    std::cout << wps[i] << " : " << waypoints[i][0] << " " <<  waypoints[i][1] << std::endl;
+  }
 
-
+  //behavior tree
   BT::BehaviorTreeFactory factory;
   BT::SharedLibrary loader;
 
@@ -56,13 +62,19 @@ int main(int argc, char * argv[])
   auto blackboard = BT::Blackboard::create();
   blackboard->set("node", node);
 
-  //std::vector<std::array<double, 4> > points_vector;
-  //points_vector.push_back(first_point);
+  blackboard->set("waypoints", waypoints);
 
-  blackboard->set("wp1", first_point);
-  blackboard->set("wp2", second_point);
-
-
+  /////////// esto estará en GetWayPoints.cpp ////////// con otro nombre que no sea bla , claro
+  std::deque< std::vector<double> > bla(wps.size(), std::vector<double> (2,0));
+  blackboard->get("waypoints",bla);
+  std::vector<double> first = bla[0];
+  bla.pop_front();
+  for (int i = 0; i < bla.size() ; i++) {
+    std::cout <<"wps ["<< i << "]: " << bla[i][0] << " " <<  bla[i][1] << std::endl;
+  }
+  std::cout <<"goal:" << first[0] << " " <<  first[1] << std::endl;
+  blackboard->set("goal", first);
+  ///////////////////////////////////////////////////////
 
   BT::Tree tree = factory.createTreeFromFile(xml_file, blackboard);
 
