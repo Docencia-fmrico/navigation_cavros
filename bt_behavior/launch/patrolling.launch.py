@@ -31,9 +31,21 @@ def generate_launch_description():
         output='screen'
     )
 
+    pkg_dir = get_package_share_directory('bt_behavior')
+    config_dir = os.path.join(pkg_dir, 'config')
+    config_file = os.path.join(config_dir, 'waypoints.yaml')
+
+    get_waypoint_cmd = Node(
+        package='bt_behavior',
+        node_executable='GetWayPoint',
+        output='screen',
+        parameters=[config_file]
+    )
+
     ld = LaunchDescription()
 
     # Add any actions
     ld.add_action(patrolling_cmd)
+    ld.add_action(get_waypoint_cmd)
 
     return ld
