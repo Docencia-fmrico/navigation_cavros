@@ -30,9 +30,7 @@ GetWayPoint::GetWayPoint(
   const std::string & xml_tag_name,
   const BT::NodeConfiguration & conf)
 : BT::ActionNodeBase(xml_tag_name, conf)
-{
-  //config().blackboard->set("wp", node_);
-  this->declare_parameter("wp1", 1.0);
+{  
 }
 
 void
@@ -50,9 +48,9 @@ GetWayPoint::tick()
   }
   */
 
-  rclcpp::Parameter<float> number = this->get_parameter("wp1").get_value<int>();
-  std::cout << number << std::endl;
-  //config().blackboard->set("wp", next);
+  //rclcpp::Parameter<float> number = this->get_parameter("wp1").get_value<int>();
+  //std::cout << number << std::endl;
+  //config().blackboard->set("wp1", next);
   return BT::NodeStatus::SUCCESS;
 }
 

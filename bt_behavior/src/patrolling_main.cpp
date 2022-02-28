@@ -29,7 +29,19 @@ int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
 
-  auto node = rclcpp::Node::make_shared("patrolling_node");
+  auto node = rclcpp::Node::make_shared("patrolling_main");
+
+  node->declare_parameter("wp1");
+  node->declare_parameter("wp2");
+
+  rclcpp::Parameter first_point = node->get_parameter("wp1");
+  rclcpp::Parameter second_point = node->get_parameter("wp2");
+
+  std::cout << first_point << std::endl;
+
+  //RCLCPP_INFO(node->get_logger(), " first[]: %s second[]: %s",
+    //            first_point.value_to_string().c_str(),second_point.value_to_string().c_str());
+
 
   BT::BehaviorTreeFactory factory;
   BT::SharedLibrary loader;
@@ -43,6 +55,15 @@ int main(int argc, char * argv[])
 
   auto blackboard = BT::Blackboard::create();
   blackboard->set("node", node);
+
+  //std::vector<std::array<double, 4> > points_vector;
+  //points_vector.push_back(first_point);
+
+  blackboard->set("wp1", first_point);
+  blackboard->set("wp2", second_point);
+
+
+
   BT::Tree tree = factory.createTreeFromFile(xml_file, blackboard);
 
   auto publisher_zmq = std::make_shared<BT::PublisherZMQ>(tree, 10, 2666, 2667);

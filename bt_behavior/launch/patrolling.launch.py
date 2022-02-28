@@ -12,7 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+import os
+
+from ament_index_python.packages import get_package_share_directory
+
 from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, SetEnvironmentVariable
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 
 
@@ -35,9 +43,9 @@ def generate_launch_description():
     config_dir = os.path.join(pkg_dir, 'config')
     config_file = os.path.join(config_dir, 'waypoints.yaml')
 
-    get_waypoint_cmd = Node(
+    patrolling_main_cmd = Node(
         package='bt_behavior',
-        node_executable='GetWayPoint',
+        node_executable='patrolling_main',
         output='screen',
         parameters=[config_file]
     )
@@ -46,6 +54,6 @@ def generate_launch_description():
 
     # Add any actions
     ld.add_action(patrolling_cmd)
-    ld.add_action(get_waypoint_cmd)
+    ld.add_action(patrolling_main_cmd)
 
     return ld
