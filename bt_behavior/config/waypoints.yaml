@@ -1,5 +1,9 @@
-br2_GetWaypoint_bt_node:
+patrolling_main:
   ros__parameters:
     waypoints: ["wp1", "wp2"]
     wp1: [1.0, 1.0]
     wp2: [-1.0, -1.0]
+    
+   
+  
+
