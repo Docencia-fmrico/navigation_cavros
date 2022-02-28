@@ -64,7 +64,7 @@ int main(int argc, char * argv[])
 
   blackboard->set("waypoints", waypoints);
 
-  /////////// esto estará en GetWayPoints.cpp ////////// con otro nombre que no sea bla , claro
+  /////////// deberá haber algo parecido pero con Input y Output en GetWayPoints.cpp //////////
   std::deque< std::vector<double> > bla(wps.size(), std::vector<double> (2,0));
   blackboard->get("waypoints",bla);
   std::vector<double> first = bla[0];
