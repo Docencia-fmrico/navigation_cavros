@@ -1,5 +1,7 @@
 # Práctica de navegación
 
+## Eunciado:
+
 [![GitHub Action
 Status](https://github.com/Docencia-fmrico/navigation/workflows/main/badge.svg)](https://github.com/Docencia-fmrico/navigation)
 
@@ -25,11 +27,11 @@ Habrá dos rondas:
 - Ronda 1: Habrá 4 waypoints, y ninguno en la posición de un obstáculo.
 - Ronda 2: Habrá 3-7 waypoints, alguno de ellos en la posición de un obstáculo. En este caso, se podrá ir al siguiente en cuanto se detecte este caso.
 
-# Solución
+## Solución
 
 La resolución del ejercucio se ha llevado a cabo partiendo del código encontrado en el repositorio [https://github.com/Docencia-fmrico/navigation](https://github.com/Docencia-fmrico/navigation). En este enlace podemos encontrar la estructura del proyecto pero con algunas funcionalidades incompletas.
 
-**Estructura del proyecto:**
+### Estructura del proyecto:
 Dentro del respositorio podemos encontrar dos paquetes, uno dedicado al comportamiento del robot y otro dedicado a la navegación con el kobuki. Dentro del paquete "bt_behavior" nos encontramos con lo siguiente:
 
 Organizaremos el código de manera que haya un programa principal que analiza los parámetros de entrada y llama a un Behavior Tree que será el que gestione el flujo de ejecución de código. A continuación se puede ver la estructura del Behavior Tree:
@@ -47,13 +49,13 @@ El segundo paquete llamado "kobuki_navigation" estará organizado de la siguient
 - Mapas: Dentro de esta carpeta podemos encontrar los ficheros que representan los mapas que vamos a usar. Uno de ellos será el que hemos creado en el laboratorio. Por cada mapa podemos encontrar un fichero .pgm que incluirá una imagen del mapa y otro fichero .yaml que establecerá los parámetros necesarios para iniciar el mapa en el visualizador como podrían ser las coordenadas de inicio.
 - Launchers: Por último podemos ver que hay una carpeta launch que incluye dos ejecutables que iniciarán la navegación. El que usaremos es el llamado "kobuki_navigation.launch".
 
-**Behavior Trees**
+### Behavior Trees
 
-**Navegación:**
+### Navegación:
 
 Recurriremos a la navegación proporcionada por [nav2](https://navigation.ros.org/index.html).
 
-**Videos**
+### Videos
 
 ## Contributors
 * Rubén Montilla Fernández
