@@ -1,4 +1,0 @@
-[0.000000] (-) TimerEvent: {}
-[0.000604] (-) JobUnselected: {'identifier': 'bt_behavior'}
-[0.001131] (-) JobUnselected: {'identifier': 'kobuki_navigation'}
-[0.001615] (-) EventReactorShutdown: {}
