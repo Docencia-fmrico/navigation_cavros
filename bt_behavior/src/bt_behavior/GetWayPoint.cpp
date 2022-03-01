@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <string>
+#include <vector>
 #include <iostream>
 
 #include "bt_behavior/GetWayPoint.hpp"
@@ -33,25 +34,24 @@ GetWayPoint::GetWayPoint(
 {
   config().blackboard->get("node", node_);
 
-  //read waypoint parameters and store them in a two-dimensional vector
+  // Read waypoint parameters and store them in a two-dimensional vector
   node_->declare_parameter("waypoints");
-  rclcpp::Parameter wps_param("waypoints",std::vector<std::string>({}));
-  node_->get_parameter("waypoints",wps_param);
+  rclcpp::Parameter wps_param("waypoints", std::vector<std::string>({}));
+  node_->get_parameter("waypoints", wps_param);
   std::vector<std::string> wps = wps_param.as_string_array();
 
-  //waypoints_(wps.size(), std::vector<double> (2,0));
+  // waypoints_(wps.size(), std::vector<double> (2,0));
 
-  for (int i = 0; i < wps.size() ; i++) {
+  for (int i = 0; i < wps.size(); i++) {
     node_->declare_parameter(wps[i]);
-    rclcpp::Parameter wp_param(wps[i],std::vector<double>({}));
-    node_->get_parameter(wps[i],wp_param);
+    rclcpp::Parameter wp_param(wps[i], std::vector<double>({}));
+    node_->get_parameter(wps[i], wp_param);
     waypoints_[i] = wp_param.as_double_array();
 
-    //debug
-    std::cout << wps[i] << " : " << waypoints_[i][0] << " " <<  waypoints_[i][1] << std::endl;
+    // Debug
+    std::cout << wps[i] << " : " << waypoints_[i][0] << " " << waypoints_[i][1] << std::endl;
     ////////
   }
-
 }
 
 void
@@ -68,10 +68,12 @@ GetWayPoint::tick()
 
   waypoints_.pop_front();
 
-  //debug//
-  //for (int i = 0; i < waypoints_.size() ; i++) {
-  //  std::cout <<"wps ["<< i << "]: " << waypoints_[i][0] << " " <<  waypoints_[i][1] << std::endl;
-  //}
+  // Debug //
+  for (int i = 0; i < waypoints_.size(); i++) {
+    std::cout << "wps [" << i << "]: " << waypoints_[i][0] << " " << waypoints_[i][1] << std::endl;
+  }
+  std::cout << "goal:" << first[0] << " " << first[1] << std::endl;
+
   /////////
   std::cout <<"goal:" << first[0] << " " <<  first[1] << std::endl;
 
