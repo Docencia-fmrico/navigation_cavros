@@ -46,7 +46,7 @@ def generate_launch_description():
 
     declare_map_yaml_cmd = DeclareLaunchArgument(
         'map',
-        default_value=os.path.join(launch_rmw_dir, 'maps', 'home.yaml'),
+        default_value=os.path.join(launch_rmw_dir, 'maps', 'map.yaml'),
         description='Full path to map yaml file to load')
 
     declare_use_sim_time_cmd = DeclareLaunchArgument(
