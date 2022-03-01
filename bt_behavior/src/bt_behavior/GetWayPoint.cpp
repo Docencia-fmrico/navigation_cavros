@@ -64,16 +64,17 @@ BT::NodeStatus
 GetWayPoint::tick()
 {
   std::vector<double> first = waypoints_[0];
+  config().blackboard->set("goal", first);
+
   waypoints_.pop_front();
 
   //debug//
-  for (int i = 0; i < waypoints_.size() ; i++) {
-    std::cout <<"wps ["<< i << "]: " << waypoints_[i][0] << " " <<  waypoints_[i][1] << std::endl;
-  }
-  std::cout <<"goal:" << first[0] << " " <<  first[1] << std::endl;
+  //for (int i = 0; i < waypoints_.size() ; i++) {
+  //  std::cout <<"wps ["<< i << "]: " << waypoints_[i][0] << " " <<  waypoints_[i][1] << std::endl;
+  //}
   /////////
+  std::cout <<"goal:" << first[0] << " " <<  first[1] << std::endl;
 
-  config().blackboard->set("goal", first);
 
   return BT::NodeStatus::SUCCESS;
 }
