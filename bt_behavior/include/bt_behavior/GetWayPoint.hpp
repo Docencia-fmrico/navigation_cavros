@@ -41,11 +41,11 @@ public:
 
   static BT::PortsList providedPorts()
   {
-    return {
-      BT::InputPort<std::deque>("waypoints"),
-      BT::OutputPort<geometry_msgs::msg::PoseStamped>("goal")
-    };
+    return {};
   }
+private:
+  rclcpp::Node::SharedPtr node_;
+  std::deque< std::vector<double> > waypoints_;
 };
 
 }  // namespace bt_behavior
