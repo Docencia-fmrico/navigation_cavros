@@ -16,6 +16,8 @@
 #define BT_BEHAVIOR__GETWAYPOINT_HPP_
 
 #include <string>
+#include <deque>
+#include <vector>
 
 #include "geometry_msgs/msg/pose_stamped.hpp"
 #include "nav2_msgs/action/navigate_to_pose.hpp"
@@ -35,17 +37,17 @@ public:
     const BT::NodeConfiguration & conf);
 
   void halt();
-  //void on_tick() ;
   BT::NodeStatus tick();
-  BT::NodeStatus on_success() ;
+  BT::NodeStatus on_success();
 
   static BT::PortsList providedPorts()
   {
     return {};
   }
+
 private:
   rclcpp::Node::SharedPtr node_;
-  std::deque< std::vector<double> > waypoints_;
+  std::deque<std::vector<double>> waypoints_;
 };
 
 }  // namespace bt_behavior
