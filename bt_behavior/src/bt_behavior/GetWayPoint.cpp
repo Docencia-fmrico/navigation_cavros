@@ -43,7 +43,7 @@ GetWayPoint::halt()
 BT::NodeStatus
 GetWayPoint::tick()
 {
-  std::deque< std::vector<double> > wps(10, std::vector<double> (2,0));
+  /*std::deque< std::vector<double> > wps(10, std::vector<double> (2,0));
   getInput("waypoints", wps);
 
   // como NO HAY BLACKBOARD AQUI ,DEBEREMOS COGER WAYPOINTS POR EL INPUT Y DEVOLVER GOAL POR EL OUTPUT ( no funciona aunn)
@@ -62,7 +62,7 @@ GetWayPoint::tick()
   geometry_msgs::msg::PoseStamped goal;
   goal.pose = first;
   setOutput(goal);
-  return BT::NodeStatus::SUCCESS;
+  return BT::NodeStatus::SUCCESS;*/
 }
 
 }  // namespace bt_behavior

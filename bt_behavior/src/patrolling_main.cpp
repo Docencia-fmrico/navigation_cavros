@@ -68,6 +68,9 @@ int main(int argc, char * argv[])
   std::deque< std::vector<double> > bla(wps.size(), std::vector<double> (2,0));
   blackboard->get("waypoints",bla);
   std::vector<double> first = bla[0];
+
+
+  
   bla.pop_front();
   for (int i = 0; i < bla.size() ; i++) {
     std::cout <<"wps ["<< i << "]: " << bla[i][0] << " " <<  bla[i][1] << std::endl;

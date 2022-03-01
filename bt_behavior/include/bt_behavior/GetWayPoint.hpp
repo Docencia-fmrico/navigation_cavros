@@ -42,8 +42,8 @@ public:
   static BT::PortsList providedPorts()
   {
     return {
-      BT::InputPort<std::deque>("waypoints");//??????
-      BT::OutputPort<geometry_msgs::msg::PoseStamped>("goal")
+      //BT::InputPort<std::deque>("waypoints");//??????
+      //BT::OutputPort<geometry_msgs::msg::PoseStamped>("goal")
     };
   }
 };
