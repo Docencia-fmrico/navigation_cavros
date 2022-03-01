@@ -43,6 +43,9 @@ public:
   {
     return {};
   }
+private:
+  rclcpp::Node::SharedPtr node_;
+  std::deque< std::vector<double> > waypoints_;
 };
 
 }  // namespace bt_behavior

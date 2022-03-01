@@ -31,7 +31,27 @@ GetWayPoint::GetWayPoint(
   const BT::NodeConfiguration & conf)
 : BT::ActionNodeBase(xml_tag_name, conf)
 {
-  
+  config().blackboard->get("node", node_);
+
+  //read waypoint parameters and store them in a two-dimensional vector
+  node_->declare_parameter("waypoints");
+  rclcpp::Parameter wps_param("waypoints",std::vector<std::string>({}));
+  node_->get_parameter("waypoints",wps_param);
+  std::vector<std::string> wps = wps_param.as_string_array();
+
+  //waypoints_(wps.size(), std::vector<double> (2,0));
+
+  for (int i = 0; i < wps.size() ; i++) {
+    node_->declare_parameter(wps[i]);
+    rclcpp::Parameter wp_param(wps[i],std::vector<double>({}));
+    node_->get_parameter(wps[i],wp_param);
+    waypoints_[i] = wp_param.as_double_array();
+
+    //debug
+    std::cout << wps[i] << " : " << waypoints_[i][0] << " " <<  waypoints_[i][1] << std::endl;
+    ////////
+  }
+
 }
 
 void
@@ -43,26 +63,19 @@ GetWayPoint::halt()
 BT::NodeStatus
 GetWayPoint::tick()
 {
-  /*std::deque< std::vector<double> > wps(10, std::vector<double> (2,0));
-  getInput("waypoints", wps);
+  std::vector<double> first = waypoints_[0];
+  waypoints_.pop_front();
 
-  // como NO HAY BLACKBOARD AQUI ,DEBEREMOS COGER WAYPOINTS POR EL INPUT Y DEVOLVER GOAL POR EL OUTPUT ( no funciona aunn)
-  //std::deque< std::vector<double> > wps(10, std::vector<double> (2,0));
-  //blackboard->get("waypoints",wps);
-  
-  ///debug///
-  for (int i = 0; i < wps.size() ; i++) {
-    std::cout <<"wps ["<< i << "]: " << wps[i][0] << " " <<  wps[i][1] << std::endl;
+  //debug//
+  for (int i = 0; i < waypoints_.size() ; i++) {
+    std::cout <<"wps ["<< i << "]: " << waypoints_[i][0] << " " <<  waypoints_[i][1] << std::endl;
   }
   std::cout <<"goal:" << first[0] << " " <<  first[1] << std::endl;
-  ///////////
+  /////////
 
-  //blackboard->set("goal", first);
-  
-  geometry_msgs::msg::PoseStamped goal;
-  goal.pose = first;
-  setOutput(goal);
-  return BT::NodeStatus::SUCCESS;*/
+  config().blackboard->set("goal", first);
+
+  return BT::NodeStatus::SUCCESS;
 }
 
 }  // namespace bt_behavior
