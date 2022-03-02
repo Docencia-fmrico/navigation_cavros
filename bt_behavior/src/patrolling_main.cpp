@@ -28,9 +28,6 @@
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
-
-  
-
   auto node = rclcpp::Node::make_shared("patrolling_main");
 
   // Behavior Tree
@@ -47,27 +44,15 @@ int main(int argc, char * argv[])
   auto blackboard = BT::Blackboard::create();
   blackboard->set("node", node);
 
-  std::cerr << "llllllllllllllll" << std::endl;
-
-
   BT::Tree tree = factory.createTreeFromFile(xml_file, blackboard);
 
-  std::cerr << "pepino" << std::endl;
-
   auto publisher_zmq = std::make_shared<BT::PublisherZMQ>(tree, 10, 2666, 2667);
-
-  std::cerr << "tomate" << std::endl;
 
   rclcpp::Rate rate(10);
 
   bool finish = false;
-  //std::cerr << "llllllllllllllll" << std::endl;
 
   while (!finish && rclcpp::ok()) {
-
-    std::cerr << "ññ" << std::endl;
-
-
     finish = tree.rootNode()->executeTick() == BT::NodeStatus::SUCCESS;
 
     rclcpp::spin_some(node);

@@ -1,0 +1,50 @@
+[0.069s] Invoking command in '/home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/blanca/TERCERO/COGNITIVOS/colcon_ws/install/ros2controlcli:/home/blanca/TERCERO/COGNITIVOS/colcon_ws/install/launch_pal:/home/blanca/TERCERO/COGNITIVOS/colcon_ws/install/intro_py_ros2:/opt/ros/foxy /usr/bin/cmake /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/kobuki_navigation -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation
+[0.213s] -- The C compiler identification is GNU 9.3.0
+[0.342s] -- The CXX compiler identification is GNU 9.3.0
+[0.358s] -- Check for working C compiler: /usr/bin/cc
+[0.547s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.550s] -- Detecting C compiler ABI info
+[0.733s] -- Detecting C compiler ABI info - done
+[0.760s] -- Detecting C compile features
+[0.761s] -- Detecting C compile features - done
+[0.766s] -- Check for working CXX compiler: /usr/bin/c++
+[0.955s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.959s] -- Detecting CXX compiler ABI info
+[1.153s] -- Detecting CXX compiler ABI info - done
+[1.179s] -- Detecting CXX compile features
+[1.180s] -- Detecting CXX compile features - done
+[1.193s] -- Found ament_cmake_auto: 0.9.9 (/opt/ros/foxy/share/ament_cmake_auto/cmake)
+[1.284s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[1.284s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.624s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[1.938s] -- Configuring done
+[1.943s] -- Generating done
+[1.944s] -- Build files have been written to: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation
+[1.951s] Invoked command in '/home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/blanca/TERCERO/COGNITIVOS/colcon_ws/install/ros2controlcli:/home/blanca/TERCERO/COGNITIVOS/colcon_ws/install/launch_pal:/home/blanca/TERCERO/COGNITIVOS/colcon_ws/install/intro_py_ros2:/opt/ros/foxy /usr/bin/cmake /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/kobuki_navigation -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation
+[1.958s] Invoking command in '/home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/blanca/TERCERO/COGNITIVOS/colcon_ws/install/ros2controlcli:/home/blanca/TERCERO/COGNITIVOS/colcon_ws/install/launch_pal:/home/blanca/TERCERO/COGNITIVOS/colcon_ws/install/intro_py_ros2:/opt/ros/foxy /usr/bin/cmake --build /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation -- -j8 -l8
+[2.074s] Invoked command in '/home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/blanca/TERCERO/COGNITIVOS/colcon_ws/install/ros2controlcli:/home/blanca/TERCERO/COGNITIVOS/colcon_ws/install/launch_pal:/home/blanca/TERCERO/COGNITIVOS/colcon_ws/install/intro_py_ros2:/opt/ros/foxy /usr/bin/cmake --build /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation -- -j8 -l8
+[2.164s] Invoking command in '/home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/blanca/TERCERO/COGNITIVOS/colcon_ws/install/ros2controlcli:/home/blanca/TERCERO/COGNITIVOS/colcon_ws/install/launch_pal:/home/blanca/TERCERO/COGNITIVOS/colcon_ws/install/intro_py_ros2:/opt/ros/foxy /usr/bin/cmake --install /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation
+[2.183s] -- Install configuration: ""
+[2.183s] -- Execute custom install script
+[2.185s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/kobuki_navigation/launch/kobuki_navigation.launch.py
+[2.209s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/kobuki_navigation/launch/navigation_launch.py
+[2.230s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/kobuki_navigation/params/kobuki_nav_params.yaml
+[2.252s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/kobuki_navigation/params/mapper_params_online_async.yaml
+[2.278s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/kobuki_navigation/maps/map.pgm
+[2.303s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/kobuki_navigation/maps/map.yaml
+[2.325s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/ament_index/resource_index/package_run_dependencies/kobuki_navigation
+[2.348s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/ament_index/resource_index/parent_prefix_path/kobuki_navigation
+[2.374s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/kobuki_navigation/environment/ament_prefix_path.sh
+[2.400s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/kobuki_navigation/environment/ament_prefix_path.dsv
+[2.427s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/kobuki_navigation/environment/path.sh
+[2.449s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/kobuki_navigation/environment/path.dsv
+[2.476s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/kobuki_navigation/local_setup.bash
+[2.502s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/kobuki_navigation/local_setup.sh
+[2.524s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/kobuki_navigation/local_setup.zsh
+[2.550s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/kobuki_navigation/local_setup.dsv
+[2.574s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/kobuki_navigation/package.dsv
+[2.599s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/ament_index/resource_index/packages/kobuki_navigation
+[2.623s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/kobuki_navigation/cmake/kobuki_navigationConfig.cmake
+[2.644s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/kobuki_navigation/cmake/kobuki_navigationConfig-version.cmake
+[2.665s] -- Symlinking: /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/install/kobuki_navigation/share/kobuki_navigation/package.xml
+[2.696s] Invoked command in '/home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/blanca/TERCERO/COGNITIVOS/colcon_ws/install/ros2controlcli:/home/blanca/TERCERO/COGNITIVOS/colcon_ws/install/launch_pal:/home/blanca/TERCERO/COGNITIVOS/colcon_ws/install/intro_py_ros2:/opt/ros/foxy /usr/bin/cmake --install /home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation
