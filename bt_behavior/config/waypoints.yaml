@@ -1,6 +1,6 @@
 patrolling_main:
   ros__parameters:
-    waypoints: ["wp1", "wp2", "wp3", "wp4"]
+    waypoints: ["wp1", "wp2","wp3","wp4"]
     wp1: [1.0, 1.0]
     wp2: [-1.0, -1.0]
     wp3: [2.3, 4.9]

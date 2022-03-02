@@ -26,34 +26,24 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
 
-    patrolling_cmd = Node(
-        package='bt_behavior',
-        executable='patrolling_main',
-        parameters=[{
-          'use_sim_time': True
-        }],
-        remappings=[
-          ('input_scan', '/scan_raw'),
-          ('output_vel', '/nav_vel')
-        ],
-        output='screen'
-    )
-
     pkg_dir = get_package_share_directory('bt_behavior')
     config_dir = os.path.join(pkg_dir, 'config')
     config_file = os.path.join(config_dir, 'waypoints.yaml')
 
-    patrolling_main_cmd = Node(
+    patrolling_cmd = Node(
         package='bt_behavior',
-        node_executable='patrolling_main',
-        output='screen',
-        parameters=[config_file]
+        executable='patrolling_main',
+        parameters=[config_file],
+        remappings=[
+          ('input_scan', '/scan_filtered'),
+          ('output_vel', '/commands/velocity')
+        ],
+        output='screen'
     )
 
     ld = LaunchDescription()
 
     # Add any actions
     ld.add_action(patrolling_cmd)
-    ld.add_action(patrolling_main_cmd)
 
     return ld

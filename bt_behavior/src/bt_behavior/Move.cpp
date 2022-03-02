@@ -39,10 +39,22 @@ Move::Move(
 void
 Move::on_tick()
 {
+  
   geometry_msgs::msg::PoseStamped goal;
+
   getInput("goal", goal);
 
+  geometry_msgs::msg::Pose pose;
+  geometry_msgs::msg::Point position;
+
+  position.x = 0.65774;
+  position.y = 2.62558;
+
+  pose.position = position;
+  goal.pose = pose;
+
   goal_.pose = goal;
+
 }
 
 BT::NodeStatus
