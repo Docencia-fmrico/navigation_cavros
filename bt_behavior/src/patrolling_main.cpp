@@ -33,7 +33,7 @@ int main(int argc, char * argv[])
 
   auto node = rclcpp::Node::make_shared("patrolling_main");
 
-  //behavior tree
+  // Behavior Tree
   BT::BehaviorTreeFactory factory;
   BT::SharedLibrary loader;
 

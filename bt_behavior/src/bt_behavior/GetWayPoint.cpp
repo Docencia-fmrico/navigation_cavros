@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <string>
+#include <vector>
 #include <iostream>
 
 #include "bt_behavior/GetWayPoint.hpp"
@@ -34,10 +35,10 @@ GetWayPoint::GetWayPoint(
   std::cerr << "DDDDDDDDDDDDD" << std::endl;
   config().blackboard->get("node", node_);
 
-  //read waypoint parameters and store them in a two-dimensional vector
+  // Read waypoint parameters and store them in a two-dimensional vector
   node_->declare_parameter("waypoints");
-  rclcpp::Parameter wps_param("waypoints",std::vector<std::string>({}));
-  node_->get_parameter("waypoints",wps_param);
+  rclcpp::Parameter wps_param("waypoints", std::vector<std::string>({}));
+  node_->get_parameter("waypoints", wps_param);
   std::vector<std::string> wps = wps_param.as_string_array();
 
   std::cerr << "ÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑÑ" << std::endl;
@@ -47,7 +48,7 @@ GetWayPoint::GetWayPoint(
 
   //waypoints_(wps.size(), std::vector<double> (2,0));
 
-  for (int i = 0; i < wps.size() ; i++) {
+  for (int i = 0; i < wps.size(); i++) {
     node_->declare_parameter(wps[i]);
     rclcpp::Parameter wp_param(wps[i],std::vector<double>({}));
     std::cerr << "AAAAAAAAAAAAAA" << wps[i]<< std::endl;
@@ -80,6 +81,8 @@ GetWayPoint::tick()
   std::cerr << "TIIIIIIIIIIICK" << std::endl;
 
   std::vector<double> first = waypoints_[0];
+  config().blackboard->set("goal", first);
+
   waypoints_.pop_front();
 
   //debug//
@@ -88,8 +91,8 @@ GetWayPoint::tick()
   }
   std::cerr <<"goal:" << first[0] << " " <<  first[1] << std::endl;
   /////////
+  std::cout <<"goal:" << first[0] << " " <<  first[1] << std::endl;
 
-  config().blackboard->set("goal", first);
 
   return BT::NodeStatus::SUCCESS;
 }
