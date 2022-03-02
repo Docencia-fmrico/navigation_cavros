@@ -4,7 +4,7 @@
     <BehaviorTree ID="BehaviorTree">
         <KeepRunningUntilFailure>
             <Sequence>
-                <Action ID="GetWaypoint" waypoint="{wp}" wp_id="next"/>
+                <Action ID="GetWayPoint" waypoint="{wp}" wp_id="next"/>
                 <Action ID="Move" goal="{wp}"/>
                 <Action ID="Patrol"/>
             </Sequence>
@@ -12,10 +12,7 @@
     </BehaviorTree>
     <!-- ////////// -->
     <TreeNodesModel>
-        <Action ID="GetWaypoint">
-            <output_port name="waypoint"/>
-            <input_port name="wp_id"/>
-        </Action>
+        <Action ID="GetWayPoint">
         <Action ID="Move">
             <input_port name="goal"/>
         </Action>
