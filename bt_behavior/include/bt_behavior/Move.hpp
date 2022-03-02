@@ -24,6 +24,9 @@
 #include "behaviortree_cpp_v3/behavior_tree.h"
 #include "behaviortree_cpp_v3/bt_factory.h"
 
+// Sound msg
+#include "kobuki_ros_interfaces/msg/sound.hpp"
+
 namespace bt_behavior
 {
 
@@ -44,8 +47,11 @@ public:
       BT::InputPort<geometry_msgs::msg::PoseStamped>("goal")
     };
   }
+private:
+  // Sound 
+  rclcpp::Node::SharedPtr node_;
+  rclcpp::Publisher<kobuki_ros_interfaces::msg::Sound>::SharedPtr sound_pub_;
 };
-
 }  // namespace bt_behavior
 
 #endif  // BT_BEHAVIOR__MOVE_HPP_
