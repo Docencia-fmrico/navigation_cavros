@@ -40,43 +40,31 @@ GetWayPoint::GetWayPoint(
   node_->get_parameter("waypoints", wps_param);
   std::vector<std::string> wps = wps_param.as_string_array();
 
-  // waypoints_(wps.size(), std::vector<double> (2,0));
-
   for (int i = 0; i < wps.size(); i++) {
     node_->declare_parameter(wps[i]);
     rclcpp::Parameter wp_param(wps[i], std::vector<double>({}));
     node_->get_parameter(wps[i], wp_param);
-    waypoints_[i] = wp_param.as_double_array();
-
-    // Debug
-    std::cout << wps[i] << " : " << waypoints_[i][0] << " " << waypoints_[i][1] << std::endl;
-    ////////
+    waypoints_.push_back(wp_param.as_double_array());
   }
 }
 
 void
 GetWayPoint::halt()
 {
-  std::cout << "GetWayPoint halt" << std::endl;
+  std::cerr << "GetWayPoint halt" << std::endl;
 }
 
 BT::NodeStatus
 GetWayPoint::tick()
 {
+  geometry_msgs::msg::PoseStamped next_goal;
+
   std::vector<double> first = waypoints_[0];
-  config().blackboard->set("goal", first);
+  next_goal.pose.position.x = first[0];
+  next_goal.pose.position.y = first[1];
 
+  setOutput("goal", next_goal);
   waypoints_.pop_front();
-
-  // Debug //
-  for (int i = 0; i < waypoints_.size(); i++) {
-    std::cout << "wps [" << i << "]: " << waypoints_[i][0] << " " << waypoints_[i][1] << std::endl;
-  }
-  std::cout << "goal:" << first[0] << " " << first[1] << std::endl;
-
-  /////////
-  std::cout <<"goal:" << first[0] << " " <<  first[1] << std::endl;
-
 
   return BT::NodeStatus::SUCCESS;
 }

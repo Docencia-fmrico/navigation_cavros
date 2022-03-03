@@ -42,7 +42,9 @@ public:
 
   static BT::PortsList providedPorts()
   {
-    return {};
+    return {
+      BT::OutputPort<geometry_msgs::msg::PoseStamped>("goal")
+    };
   }
 
 private:

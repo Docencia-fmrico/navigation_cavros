@@ -1,0 +1,9 @@
+/home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation/CMakeFiles/install/strip.dir
+/home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation/CMakeFiles/install/local.dir
+/home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation/CMakeFiles/install.dir
+/home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation/CMakeFiles/list_install_components.dir
+/home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation/CMakeFiles/rebuild_cache.dir
+/home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation/CMakeFiles/edit_cache.dir
+/home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation/CMakeFiles/test.dir
+/home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation/CMakeFiles/kobuki_navigation_uninstall.dir
+/home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation/CMakeFiles/uninstall.dir
