@@ -74,10 +74,6 @@ GetWayPoint::tick()
   }
   std::cout << "goal:" << first[0] << " " << first[1] << std::endl;
 
-  /////////
-  std::cout <<"goal:" << first[0] << " " <<  first[1] << std::endl;
-
-
   return BT::NodeStatus::SUCCESS;
 }
 

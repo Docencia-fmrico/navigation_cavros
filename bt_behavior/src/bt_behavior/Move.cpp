@@ -34,8 +34,6 @@ Move::Move(
 : bt_behavior::BtActionNode<nav2_msgs::action::NavigateToPose>(xml_tag_name, action_name,
     conf)
 {
-
-  // Sound publisher 
   config().blackboard->get("node", node_);
   sound_pub_ = node_->create_publisher<kobuki_ros_interfaces::msg::Sound>("/commands/sound", 10);
 }

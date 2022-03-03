@@ -48,7 +48,6 @@ public:
     };
   }
 private:
-  // Sound 
   rclcpp::Node::SharedPtr node_;
   rclcpp::Publisher<kobuki_ros_interfaces::msg::Sound>::SharedPtr sound_pub_;
 };
