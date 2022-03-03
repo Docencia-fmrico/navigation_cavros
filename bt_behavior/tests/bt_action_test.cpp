@@ -202,6 +202,54 @@ TEST(bt_action, move_btn)
   t.join();
 }
 
+/*
+TEST(bt_action, getwaypoint_btn)
+{
+  auto node = rclcpp::Node::make_shared("br2_GetWaypoint_bt_node");
+  //auto nav2_fake_node = std::make_shared<Nav2FakeServer>();
+
+  nav2_fake_node->start_server();
+
+  bool finish = false;
+  std::thread t([&]() {
+      while (!finish) {rclcpp::spin_some(nav2_fake_node);}
+    });
+
+
+  BT::BehaviorTreeFactory factory;
+  BT::SharedLibrary loader;
+
+  factory.registerFromPlugin(loader.getOSName("br2_GetWaypoint_bt_node"));
+
+  std::string xml_bt =
+    R"(
+    <root main_tree_to_execute = "MainTree" >
+      <BehaviorTree ID="MainTree">
+          <GetWayPoint goal="{goal}"/>
+      </BehaviorTree>
+    </root>)";
+
+  auto blackboard = BT::Blackboard::create();
+  blackboard->set("node", node);
+
+  BT::Tree tree = factory.createTreeFromText(xml_bt, blackboard);
+
+  rclcpp::Rate rate(10);
+
+  int counter = 0;
+  while (!finish && rclcpp::ok()) {
+    finish = tree.rootNode()->executeTick() == BT::NodeStatus::SUCCESS;
+    rate.sleep();
+  }
+  for (int i = 0; i<node->waypoints_.size(); i++) {
+    // hacer aqui un assert o algo de eso :)
+    std::cerr << wps[i] << " : " << waypoints_[i][0] << " " <<  waypoints_[i][1] << std::endl;
+  }
+
+  t.join();
+}
+*/
+
 int main(int argc, char ** argv)
 {
   rclcpp::init(argc, argv);

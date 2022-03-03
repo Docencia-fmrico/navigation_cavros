@@ -95,4 +95,6 @@ def generate_launch_description():
  
     ld.add_action(nav2_bringup_cmd_group)
 
+    print("================================ 9")
+
     return ld

@@ -42,7 +42,10 @@ void
 Move::on_tick()
 {
   geometry_msgs::msg::PoseStamped goal;
+
   getInput("goal", goal);
+
+  std::cerr << "GOING TO: " << goal.pose.position.x << " , " << goal.pose.position.y << std::endl;
 
   goal_.pose = goal;
 }
