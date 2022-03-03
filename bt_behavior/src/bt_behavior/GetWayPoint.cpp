@@ -14,13 +14,8 @@
 
 #include <string>
 #include <vector>
-#include <iostream>
 
 #include "bt_behavior/GetWayPoint.hpp"
-
-#include "behaviortree_cpp_v3/behavior_tree.h"
-
-#include "rclcpp/rclcpp.hpp"
 
 namespace bt_behavior
 {
