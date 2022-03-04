@@ -33,6 +33,8 @@ GetWayPoint::GetWayPoint(
 : BT::ActionNodeBase(xml_tag_name, conf)
 {
   config().blackboard->get("node", node_);
+  sub_map_ = node_->create_subscription<nav_msgs::msg::OccupancyGrid>(
+    "/map", 1, std::bind(&GetWayPoint::map_callback, this, _1));
 
   // Read waypoint parameters and store them in a two-dimensional vector
   node_->declare_parameter("waypoints");
@@ -55,6 +57,26 @@ GetWayPoint::GetWayPoint(
 }
 
 void
+GetWayPoint::map_callback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg)
+{
+  costmap_ = navigation_cavros::Costmap2D_map(*msg);
+}
+
+bool
+GetWayPoint::is_occupied(std::vector<double> coordinate)
+{
+  std::vector<unsigned int> map_coordinate;
+  unsigned int cost;
+
+  costmap_.worldToMap(coordinate[0], coordinate[1], map_coordinate[0], map_coordinate[1]);
+  cost = costmap_.getCost(map_coordinate[0], map_coordinate[1]);
+  if (cost > 0) {
+    return false;
+  }
+  return true;
+}
+
+void
 GetWayPoint::halt()
 {
   std::cout << "GetWayPoint halt" << std::endl;
@@ -64,6 +86,10 @@ BT::NodeStatus
 GetWayPoint::tick()
 {
   std::vector<double> first = waypoints_[0];
+  while (is_occupied(first)) {
+    waypoints_.pop_front();
+    first = waypoints_[0];
+  }
   config().blackboard->set("goal", first);
 
   waypoints_.pop_front();
@@ -75,7 +101,7 @@ GetWayPoint::tick()
   std::cout << "goal:" << first[0] << " " << first[1] << std::endl;
 
   /////////
-  std::cout <<"goal:" << first[0] << " " <<  first[1] << std::endl;
+  std::cout << "goal:" << first[0] << " " << first[1] << std::endl;
 
 
   return BT::NodeStatus::SUCCESS;

@@ -15,6 +15,7 @@ find_package(action_msgs REQUIRED)
 find_package(lifecycle_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav2_msgs REQUIRED)
+find_package(nav2_costmap_2d REQUIRED)
 find_package(ament_index_cpp REQUIRED)
 
 find_package(ZMQ)
@@ -36,6 +37,8 @@ set(dependencies
     lifecycle_msgs
     geometry_msgs
     nav2_msgs
+    nav_msgs
+    nav2_costmap_2d
     ament_index_cpp
 )
 

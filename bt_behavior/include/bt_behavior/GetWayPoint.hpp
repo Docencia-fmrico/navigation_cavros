@@ -21,10 +21,14 @@
 
 #include "geometry_msgs/msg/pose_stamped.hpp"
 #include "nav2_msgs/action/navigate_to_pose.hpp"
+#include "nav_msgs/msg/occupancy_grid.hpp"
 
 #include "bt_behavior/ctrl_support/BTActionNode.hpp"
 #include "behaviortree_cpp_v3/behavior_tree.h"
 #include "behaviortree_cpp_v3/bt_factory.h"
+#include "bt_behavior/costmap_2d_map.hpp"
+
+using std::placeholders::_1;
 
 namespace bt_behavior
 {
@@ -40,6 +44,8 @@ public:
   BT::NodeStatus tick();
   BT::NodeStatus on_success();
 
+  void map_callback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg);
+
   static BT::PortsList providedPorts()
   {
     return {};
@@ -48,6 +54,11 @@ public:
 private:
   rclcpp::Node::SharedPtr node_;
   std::deque<std::vector<double>> waypoints_;
+
+  rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr sub_map_;
+  nav2_costmap_2d::Costmap2D costmap_;
+
+  bool is_occupied(std::vector<double> coordinate);
 };
 
 }  // namespace bt_behavior
