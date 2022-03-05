@@ -39,7 +39,7 @@ Dentro del paquete "bt_behavior" nos encontramos con lo siguiente:
 
 Organizaremos el código de manera que haya un programa principal que analiza los parámetros de entrada y llama a un Behavior Tree que será el que gestione el flujo de ejecución de código. A continuación se puede ver la estructura del Behavior Tree:
 
-![Behavior tree](https://raw.githubusercontent.com/Docencia-fmrico/navigation_cavros/tree/readme/images/map.png)
+![Behavior tree](https://github.com/Docencia-fmrico/navigation_cavros/blob/readme/images/BT.png?raw=true)
 
 Podemos ver que únicamente tendremos dos acciones descritas a continuación:
 - GetWayPoint: será la acción que usando los parámetros obtenidos en el fichero "waypoints.yaml" proporcionará el destino al nodo Move.
@@ -67,7 +67,7 @@ Por tanto, una vez listo el robot para teleoperarse hicimos lo siguiente:
 - Aprovechamos la funcionalidad del paquete nav2 para suscribirnos al topic map y guardar dicha información.
 - Por último y una vez conformes con el mapa obtenido, guardamos los resultados en dos ficheros (.pgm y .yaml).
 
-![Mapa final](https://raw.githubusercontent.com/Docencia-fmrico/navigation_cavros/tree/readme/images/map.png)
+![Mapa final](https://github.com/Docencia-fmrico/navigation_cavros/blob/readme/images/map.png?raw=true)
 
 ### Navegación:
 
