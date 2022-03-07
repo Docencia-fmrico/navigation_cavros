@@ -46,7 +46,7 @@ namespace navigation_cavros
 class Costmap2D_map : public nav2_costmap_2d::Costmap2D
 {
 public:
-  Costmap2D_map(const nav_msgs::msg::OccupancyGrid & map)
+  explicit Costmap2D_map(const nav_msgs::msg::OccupancyGrid & map)
   {
     // fill local variables
     size_x_ = map.info.width;
@@ -61,19 +61,19 @@ public:
     // fill the costmap with a data
     int8_t data;
     for (unsigned int it = 0; it < size_x_ * size_y_; it++) {
-    	data = map.data[it];
-    	if (data == OCC_GRID_UNKNOWN) {
+      data = map.data[it];
+      if (data == OCC_GRID_UNKNOWN) {
         costmap_[it] = NO_INFORMATION;
-  		} else {
-    	// Linear conversion from OccupancyGrid data range [OCC_GRID_FREE..OCC_GRID_OCCUPIED]
-    	// to costmap data range [FREE_SPACE..LETHAL_OBSTACLE]
+      } else {
+        // Linear conversion from OccupancyGrid data range [OCC_GRID_FREE..OCC_GRID_OCCUPIED]
+        // to costmap data range [FREE_SPACE..LETHAL_OBSTACLE]
         costmap_[it] = std::round(
-        static_cast<double>(data) * (LETHAL_OBSTACLE - FREE_SPACE) /
-        (OCC_GRID_OCCUPIED - OCC_GRID_FREE));
-    	}
+          static_cast<double>(data) * (LETHAL_OBSTACLE - FREE_SPACE) /
+          (OCC_GRID_OCCUPIED - OCC_GRID_FREE));
+      }
     }
-	}
-}
+  }
+
 private:
 };
 

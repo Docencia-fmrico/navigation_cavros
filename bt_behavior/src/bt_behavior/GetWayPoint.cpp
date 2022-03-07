@@ -71,9 +71,9 @@ GetWayPoint::is_occupied(std::vector<double> coordinate)
   costmap_.worldToMap(coordinate[0], coordinate[1], map_coordinate[0], map_coordinate[1]);
   cost = costmap_.getCost(map_coordinate[0], map_coordinate[1]);
   if (cost > 0) {
-    return false;
+    return true;
   }
-  return true;
+  return false;
 }
 
 void
