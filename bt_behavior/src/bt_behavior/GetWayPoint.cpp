@@ -82,12 +82,14 @@ GetWayPoint::tick()
   geometry_msgs::msg::PoseStamped next_goal;
 
   std::vector<double> first = waypoints_[0];
- // while (is_occupied(first)) {
- //   waypoints_.pop_front();
- //   first = waypoints_[0];
- // }
+  std::cout << "Waypoint: (" << first[0] << ", " << first[1] << ")" << std::endl;
+  while (is_occupied(first)) {
+    waypoints_.pop_front();
+    std::cout << "Waypoint: (" << first[0] << ", " << first[1] << ")" << std::endl;
+    first = waypoints_[0];
+  }
 
-  //std::cout << "Waypoint: (" << first[0] << ", " << first[1] << ")" << std::endl;
+  std::cout << "Waypoint: (" << first[0] << ", " << first[1] << ")" << std::endl;
 
   next_goal.pose.position.x = 0;
   next_goal.pose.position.y = 0;
