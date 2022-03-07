@@ -21,6 +21,7 @@ namespace bt_behavior
 {
 
 using namespace std::chrono_literals;
+using std::placeholders::_1;
 
 GetWayPoint::GetWayPoint(
   const std::string & xml_tag_name,
@@ -41,6 +42,30 @@ GetWayPoint::GetWayPoint(
     node_->get_parameter(wps[i], wp_param);
     waypoints_.push_back(wp_param.as_double_array());
   }
+
+  sub_map_ = node_->create_subscription<nav_msgs::msg::OccupancyGrid>(
+    "/map", 1, std::bind(&GetWayPoint::map_callback, this, _1));
+}
+
+void
+GetWayPoint::map_callback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg)
+{
+  costmap_ = navigation_cavros::Costmap2D_map(*msg);
+  std::cout << "LAAALAA" << std::endl;
+}
+
+bool
+GetWayPoint::is_occupied(std::vector<double> coordinate)
+{
+  std::vector<unsigned int> map_coordinate;
+  unsigned int cost = 0;
+
+  //costmap_.worldToMap(coordinate[0], coordinate[1], map_coordinate[0], map_coordinate[1]);
+  //cost = costmap_.getCost(map_coordinate[0], map_coordinate[1]);
+  if (cost > 0) {
+    return true;
+  }
+  return false;
 }
 
 void
@@ -54,18 +79,17 @@ GetWayPoint::tick()
 {
   geometry_msgs::msg::PoseStamped next_goal;
 
-
-  if(waypoints_.size() == 0){
-    next_goal.pose.position.x = (double)1000.0;
-    next_goal.pose.position.y = (double)1000.0;
-    setOutput("goal", next_goal);
-    
-
+  if (waypoints_.size() == 0){
     return BT::NodeStatus::FAILURE;
-
   }
-
+  
   std::vector<double> first = waypoints_[0];
+
+  while (is_occupied(first)) {
+    waypoints_.pop_front();
+    std::cout << "Waypoint: (" << first[0] << ", " << first[1] << ")" << std::endl;
+    first = waypoints_[0];
+  }
   
   next_goal.pose.position.x = first[0];
   next_goal.pose.position.y = first[1];
