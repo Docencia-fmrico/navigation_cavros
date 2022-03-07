@@ -51,9 +51,9 @@ public:
   {
     size_x_ = 0;
     size_y_ = 0;
-    resolution_ = (0,0);
-    origin_x_ = (0,0);
-    origin_y_ = (0,0);
+    resolution_ = (0, 0);
+    origin_x_ = (0, 0);
+    origin_y_ = (0, 0);
     costmap_ = NULL;
   }
 

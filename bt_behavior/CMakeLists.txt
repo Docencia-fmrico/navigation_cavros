@@ -14,7 +14,9 @@ find_package(behaviortree_cpp_v3 REQUIRED)
 find_package(action_msgs REQUIRED)
 find_package(lifecycle_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
 find_package(nav2_msgs REQUIRED)
+find_package(nav2_map_server REQUIRED)
 find_package(ament_index_cpp REQUIRED)
 find_package(nav2_costmap_2d REQUIRED)
 find_package(kobuki_ros_interfaces REQUIRED)
@@ -38,6 +40,7 @@ set(dependencies
     lifecycle_msgs
     geometry_msgs
     nav2_msgs
+    nav2_map_server
     ament_index_cpp
     nav_msgs
     nav2_costmap_2d

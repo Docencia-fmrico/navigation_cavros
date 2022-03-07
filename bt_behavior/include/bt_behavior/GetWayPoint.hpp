@@ -27,6 +27,7 @@
 
 #include "behaviortree_cpp_v3/behavior_tree.h"
 #include "behaviortree_cpp_v3/bt_factory.h"
+#include "nav2_map_server/map_io.hpp"
 
 #include "costmap_2d_map.hpp"
 namespace bt_behavior
@@ -42,9 +43,9 @@ public:
   void halt();
   BT::NodeStatus tick();
   BT::NodeStatus on_success();
-  void map_callback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg);
+  // void map_callback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg);
   bool is_occupied(std::vector<double> coordinate);
-  
+
   static BT::PortsList providedPorts()
   {
     return {
