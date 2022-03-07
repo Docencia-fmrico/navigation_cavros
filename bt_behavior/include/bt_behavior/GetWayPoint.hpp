@@ -23,6 +23,8 @@
 #include "nav2_msgs/action/navigate_to_pose.hpp"
 #include "nav_msgs/msg/occupancy_grid.hpp"
 
+#include "./costmap_2d_map.hpp"
+
 #include "bt_behavior/ctrl_support/BTActionNode.hpp"
 #include "behaviortree_cpp_v3/behavior_tree.h"
 #include "behaviortree_cpp_v3/bt_factory.h"
@@ -58,7 +60,7 @@ private:
   std::deque<std::vector<double>> waypoints_;
 
   rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr sub_map_;
-  nav2_costmap_2d::Costmap2D costmap_;
+  navigation_cavros::Costmap2D_map costmap_;
 
   bool is_occupied(std::vector<double> coordinate);
 };
