@@ -28,7 +28,6 @@
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
-
   auto node = rclcpp::Node::make_shared("patrolling_main");
 
   // Behavior Tree
@@ -52,6 +51,7 @@ int main(int argc, char * argv[])
   rclcpp::Rate rate(10);
 
   bool finish = false;
+
   while (!finish && rclcpp::ok()) {
     finish = tree.rootNode()->executeTick() == BT::NodeStatus::SUCCESS;
 
