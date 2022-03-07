@@ -67,7 +67,7 @@ Por tanto, una vez listo el robot para teleoperarse hicimos lo siguiente:
 - Aprovechamos la funcionalidad del paquete nav2 para suscribirnos al topic map y guardar dicha información.
 - Por último y una vez conformes con el mapa obtenido, guardamos los resultados en dos ficheros (.pgm y .yaml).
 
-![Mapa final](https://github.com/Docencia-fmrico/navigation_cavros/blob/readme/images/map.png?raw=true)
+![Mapa final](https://github.com/Docencia-fmrico/navigation_cavros/blob/readme/images/mapg.png?raw=true)
 
 ### Navegación:
 
