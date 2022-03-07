@@ -24,6 +24,8 @@
 #include "nav2_msgs/action/navigate_to_pose.hpp"
 #include "bt_behavior/ctrl_support/BTActionNode.hpp"
 #include "kobuki_ros_interfaces/msg/sound.hpp"
+#include "kobuki_ros_interfaces/msg/led.hpp"
+
 
 #include "behaviortree_cpp_v3/behavior_tree.h"
 #include "behaviortree_cpp_v3/bt_factory.h"
@@ -52,6 +54,9 @@ public:
 private:
   rclcpp::Node::SharedPtr node_;
   rclcpp::Publisher<kobuki_ros_interfaces::msg::Sound>::SharedPtr sound_pub_;
+  rclcpp::Publisher<kobuki_ros_interfaces::msg::Led>::SharedPtr led_pub_;
+
+
 };
 
 }  // namespace bt_behavior

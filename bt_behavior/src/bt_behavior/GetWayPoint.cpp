@@ -54,10 +54,21 @@ GetWayPoint::tick()
 {
   geometry_msgs::msg::PoseStamped next_goal;
 
+
+  if(waypoints_.size() == 0){
+    next_goal.pose.position.x = (double)1000.0;
+    next_goal.pose.position.y = (double)1000.0;
+    setOutput("goal", next_goal);
+    
+
+    return BT::NodeStatus::FAILURE;
+
+  }
+
   std::vector<double> first = waypoints_[0];
+  
   next_goal.pose.position.x = first[0];
   next_goal.pose.position.y = first[1];
-
   setOutput("goal", next_goal);
   waypoints_.pop_front();
 
