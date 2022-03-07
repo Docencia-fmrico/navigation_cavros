@@ -16,6 +16,7 @@ find_package(lifecycle_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav2_msgs REQUIRED)
 find_package(ament_index_cpp REQUIRED)
+find_package(kobuki_ros_interfaces REQUIRED)
 
 find_package(ZMQ)
 if(ZMQ_FOUND)
@@ -37,15 +38,14 @@ set(dependencies
     geometry_msgs
     nav2_msgs
     ament_index_cpp
+    kobuki_ros_interfaces
 )
 
 include_directories(include ${ZMQ_INCLUDE_DIRS})
 
-add_library(br2_patrol_bt_node SHARED src/bt_behavior/Patrol.cpp)
 add_library(br2_move_bt_node SHARED src/bt_behavior/Move.cpp)
 add_library(br2_GetWaypoint_bt_node SHARED src/bt_behavior/GetWayPoint.cpp)
 list(APPEND plugin_libs
-  br2_patrol_bt_node
   br2_move_bt_node
   br2_GetWaypoint_bt_node
 )
