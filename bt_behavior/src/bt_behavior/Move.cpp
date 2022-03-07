@@ -13,16 +13,9 @@
 // limitations under the License.
 
 #include <string>
-#include <iostream>
-#include <vector>
 #include <memory>
 
 #include "bt_behavior/Move.hpp"
-
-#include "geometry_msgs/msg/pose_stamped.hpp"
-#include "nav2_msgs/action/navigate_to_pose.hpp"
-
-#include "behaviortree_cpp_v3/behavior_tree.h"
 
 namespace bt_behavior
 {
@@ -34,16 +27,26 @@ Move::Move(
 : bt_behavior::BtActionNode<nav2_msgs::action::NavigateToPose>(xml_tag_name, action_name,
     conf)
 {
+  config().blackboard->get("node", node_);
+  sound_pub_ = node_->create_publisher<kobuki_ros_interfaces::msg::Sound>("/commands/sound", 10);
+  led_pub_ = node_->create_publisher<kobuki_ros_interfaces::msg::Led>("/commands/led1", 10);
+
 }
 
 void
 Move::on_tick()
 {
   geometry_msgs::msg::PoseStamped goal;
+  kobuki_ros_interfaces::msg::Led led_goal;
+
 
   getInput("goal", goal);
 
   std::cerr << "GOING TO: " << goal.pose.position.x << " , " << goal.pose.position.y << std::endl;
+  led_goal.value = 2;//orange
+  led_pub_->publish(led_goal);
+  
+
 
   goal_.pose = goal;
 }
@@ -52,6 +55,17 @@ BT::NodeStatus
 Move::on_success()
 {
   RCLCPP_INFO(node_->get_logger(), "navigation Suceeded");
+  
+
+  kobuki_ros_interfaces::msg::Sound success_alert;
+  kobuki_ros_interfaces::msg::Led led_goal;
+
+  success_alert.value = 6;
+  sound_pub_->publish(success_alert);
+
+  led_goal.value = 1;//green
+
+  led_pub_->publish(led_goal);
 
   return BT::NodeStatus::SUCCESS;
 }

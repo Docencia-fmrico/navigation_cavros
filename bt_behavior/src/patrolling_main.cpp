@@ -35,7 +35,6 @@ int main(int argc, char * argv[])
   BT::SharedLibrary loader;
 
   factory.registerFromPlugin(loader.getOSName("br2_move_bt_node"));
-  factory.registerFromPlugin(loader.getOSName("br2_patrol_bt_node"));
   factory.registerFromPlugin(loader.getOSName("br2_GetWaypoint_bt_node"));
 
   std::string pkgpath = ament_index_cpp::get_package_share_directory("bt_behavior");

@@ -14,13 +14,8 @@
 
 #include <string>
 #include <vector>
-#include <iostream>
 
 #include "bt_behavior/GetWayPoint.hpp"
-
-#include "behaviortree_cpp_v3/behavior_tree.h"
-
-#include "rclcpp/rclcpp.hpp"
 
 namespace bt_behavior
 {
@@ -83,9 +78,11 @@ BT::NodeStatus
 GetWayPoint::tick()
 {
   geometry_msgs::msg::PoseStamped next_goal;
+
   if (waypoints_.size() == 0){
     return BT::NodeStatus::FAILURE;
   }
+  
   std::vector<double> first = waypoints_[0];
 
   while (is_occupied(first)) {
@@ -93,10 +90,9 @@ GetWayPoint::tick()
     std::cout << "Waypoint: (" << first[0] << ", " << first[1] << ")" << std::endl;
     first = waypoints_[0];
   }
-
+  
   next_goal.pose.position.x = first[0];
   next_goal.pose.position.y = first[1];
-
   setOutput("goal", next_goal);
   waypoints_.pop_front();
 

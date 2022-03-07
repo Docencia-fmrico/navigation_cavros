@@ -1,1 +1,0 @@
-/home/blanca/TERCERO/COGNITIVOS/colcon_ws/src/navigation_cavros/build/kobuki_navigation/ament_cmake_core/kobuki_navigationConfig-version.cmake
